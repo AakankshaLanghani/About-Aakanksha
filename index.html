@@ -223,12 +223,29 @@
       .side-nav { display: none; }
     }
 
-    @media (max-width: 520px) {
-      .entry { grid-template-columns: 72px 1fr; }
-      .project { grid-template-columns: 1fr; }
-      .project-icon { display: none; }
-      h2 { font-size: 1.9em; }
-      .header h1 { font-size: 2em; }
+    @media (max-width: 600px) {
+      body { padding: 32px 18px 64px; font-size: 15px; }
+
+      .header h1 { font-size: 1.9em; }
+      .header img { width: 110px; height: 110px; }
+
+      h2 { font-size: 1.9em; margin: 1.1em 0 0.45em; }
+
+      /* timeline: tighter year column */
+      .entry { grid-template-columns: 64px 1fr; column-gap: 16px; margin-bottom: 2em; }
+      .timeline::before { left: 72px; }
+      .entry::before { left: 67px; }
+      .year { font-size: 0.72em; }
+
+      /* contact grid stacks nicely */
+      .contact-grid div { flex-direction: column; gap: 0.2em; }
+      .contact-label { min-width: unset; }
+
+      /* social icons slightly smaller */
+      .social-icons a { width: 36px; height: 36px; }
+
+      /* pub border */
+      .pub { padding-left: 0.75em; }
     }
   </style>
 </head>
