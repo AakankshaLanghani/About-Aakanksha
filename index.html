@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aakanksha Pardeep</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 16px;
+      line-height: 1.75;
+      color: #222;
+      background: #fff;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+    }
+
+    a { color: #1a0dab; }
+    a:visited { color: #609; }
+
+    p { margin: 0.75em 0 1em; }
+
+    /* ─── HEADER ───────────────────────────────────── */
+    .header {
+      text-align: center;
+      margin-bottom: 3.5em;
+    }
+
+    .header img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      margin-bottom: 1em;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .header h1 {
+      font-size: 2.6em;
+      font-weight: normal;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.15em;
+    }
+
+    .tagline {
+      font-style: italic;
+      color: #444;
+      font-size: 1em;
+      margin-bottom: 1.1em;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #222;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover { background: #555; }
+
+    /* ─── SECTION HEADERS ───────────────────────────── */
+    h2 {
+      font-size: 2.6em;
+      font-weight: normal;
+      font-family: Georgia, serif;
+      margin: 1.4em 0 0.55em;
+      letter-spacing: -0.5px;
+    }
+
+    /* ─── TIMELINE ──────────────────────────────────── */
+    .timeline {
+      margin-top: 0.5em;
+      position: relative;
+    }
+
+    /* continuous vertical line */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 108px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: #ddd;
+    }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      column-gap: 24px;
+      margin-bottom: 2.4em;
+      align-items: start;
+      position: relative;
+    }
+
+    /* dot on the line */
+    .entry::before {
+      content: '';
+      position: absolute;
+      left: 103px;
+      top: 7px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ccc;
+      z-index: 1;
+    }
+
+    .year {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8em;
+      color: #999;
+      line-height: 1.35;
+      padding-top: 4px;
+      text-align: right;
+    }
+
+    .entry-body { min-width: 0; }
+    .entry-body p { margin: 0.5em 0 0; }
+
+    /* ─── PROJECTS ──────────────────────────────────── */
+    .project {
+      margin-bottom: 1.2em;
+    }
+
+    .project a { font-weight: bold; }
+
+    /* ─── RESEARCH ──────────────────────────────────── */
+    .pub {
+      border-left: 3px solid #c0c0c0;
+      padding-left: 1em;
+      margin-bottom: 1.4em;
+    }
+
+    .pub-venue {
+      color: #1a7a1a;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.88em;
+    }
+
+    .pub-authors {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.88em;
+      color: #555;
+      display: block;
+      margin-top: 0.1em;
+    }
+
+    /* ─── CONTACT ───────────────────────────────────── */
+    .contact-grid {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.94em;
+      margin-top: 0.4em;
+    }
+
+    .contact-grid div {
+      display: flex;
+      gap: 0.8em;
+      margin-bottom: 0.5em;
+      align-items: baseline;
+    }
+
+    .contact-label {
+      color: #888;
+      min-width: 68px;
+      font-size: 0.88em;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      margin-top: 4em;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.82em;
+      color: #aaa;
+      border-top: 1px solid #efefef;
+      padding-top: 1.2em;
+    }
+
+    /* ─── STICKY SIDE NAV ──────────────────────────── */
+    .side-nav {
+      position: fixed;
+      left: calc(50% - 440px);
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6em;
+    }
+
+    .side-nav a {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78em;
+      color: #bbb;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
+    }
+
+    .side-nav a:hover { color: #333; }
+    .side-nav a:visited { color: #bbb; }
+    .side-nav a:hover { color: #333; }
+
+    /* hide side nav when viewport is too narrow */
+    @media (max-width: 1020px) {
+      .side-nav { display: none; }
+    }
+
+    @media (max-width: 520px) {
+      .entry { grid-template-columns: 72px 1fr; }
+      .project { grid-template-columns: 1fr; }
+      .project-icon { display: none; }
+      h2 { font-size: 1.9em; }
+      .header h1 { font-size: 2em; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── SIDE NAV ────────────────────────────────────── -->
+  <nav class="side-nav">
+    <a href="#bio">bio</a>
+    <a href="#projects">projects</a>
+    <a href="#research">research</a>
+    <a href="#contact">contact</a>
+    <a href="#misc">misc</a>
+  </nav>
+
+  <!-- ─── HEADER ─────────────────────────────────────── -->
+  <div class="header">
+    <img src="aakanksha profile pic.PNG" alt="Aakanksha Pardeep">
+    <h1>Aakanksha Pardeep</h1>
+    <p class="tagline">I like to build AI agents that do real work &#x1F916;&#x26A1;</p>
+
+    <div class="social-icons">
+      <a href="https://github.com/AakankshaLanghani" title="GitHub">
+        <svg width="19" height="19" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+          0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
+          -.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2
+          -3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82
+          .64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08
+          2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
+          1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/aakankshapardeep/" title="LinkedIn">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136
+          1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0
+          4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065
+          0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064
+          2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0
+          1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24
+          .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </a>
+      <a href="mailto:akankshalanghani13@gmail.com" title="Email">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9
+          2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- ─── TIMELINE ──────────────────────────────────── -->
+  <div class="timeline">
+
+    <div class="entry">
+      <div class="year">2026 - present</div>
+      <div class="entry-body">
+        <p>I joined <strong>ICS Group of Companies</strong> as their first (and so far only) AI
+        engineer. The company ran entirely on manual processes across every department, which made
+        for a very interesting first week. I'm building custom AI applications, writing production
+        prompts, and deploying tools across finance, logistics, HR, and pharmaceutical research.
+        Every project here is greenfield, which is either exciting or terrifying depending on
+        the day. Mostly exciting.</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="year">Sep - Nov<br>2025</div>
+      <div class="entry-body">
+        <p>I interned at <strong>Avanza Solutions</strong> where I built an agentic AI for the
+        Pre-Sales team that automated client engagement workflows and intelligently filled RFC forms
+        by pulling information from relevant documents. I also built and deployed a full-stack
+        Revenue Analyzer AI Agent (n8n + Supabase + PostgreSQL + a dynamic React frontend) that
+        let business users query their financial data in plain English and get real-time insights
+        back. RAG was threaded throughout both projects for reasoning over structured and
+        unstructured data.</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="year">Jun - Sep<br>2025</div>
+      <div class="entry-body">
+        <p>At <strong>Wavetec</strong> I documented and analyzed over 1,000 stored procedures used
+        in the Spectra Dashboard, which was its own kind of archaeological dig. I also built an AI
+        chatbot integrated with Wavetec's website using n8n, LangChain, GPT-4o, Supabase, and
+        Pinecone, with real-time RAG and dynamic memory management for support conversations. Along
+        the way I integrated Meta's WhatsApp API for template messaging and session flows with
+        branch-level configuration and role-based access.</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="year">Sep - Nov<br>2024</div>
+      <div class="entry-body">
+        <p>My first real data role. At <strong>Curvet Solution</strong> I extracted, cleaned, and
+        transformed large datasets using SQL and Python in support of business intelligence work,
+        and built interactive Power BI dashboards that stakeholders actually used for
+        decision-making. That last part was the satisfying bit.</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="year">2022 - 2026</div>
+      <div class="entry-body">
+        <p>I'm finishing my BS in Computer Science at the
+        <a href="https://www.iobm.edu.pk/">Institute of Business Management</a> in Karachi on a
+        50% merit scholarship. Coursework has spanned Artificial Intelligence, Big Data and
+        Analytics, Cloud Computing, Cybersecurity, Data Structures and Algorithms, DBMS, and OOP.
+        Somewhere in between I found time to write a research paper on EEG-based emotion recognition
+        for clinical environments, which you can read about below.</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="year">2019</div>
+      <div class="entry-body">
+        <p>I was selected as one of 14 delegates for the Pakistani Delegation at the
+        <a href="https://www.seedsofpeace.org/">Seeds of Peace</a> International Camp in Maine,
+        USA, chosen from over 300 applicants with a fully funded scholarship. I spent the summer
+        alongside peers from India, USA, UK, Israel, Palestine, Jordan, and Egypt working through
+        difficult conversations on conflict, identity, gender equality, policymaking, and what it
+        actually takes to build understanding across borders. It changed how I think.</p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ─── BIO ───────────────────────────────────────── -->
+  <h2 id="bio">bio</h2>
+
+  <p>
+    Aakanksha Pardeep is an AI Research and Development Engineer from Karachi, Pakistan. She builds
+    agentic systems, RAG pipelines, and full-stack AI applications, with a focus on turning
+    research-stage ideas into things real teams actually use. She is currently the sole AI engineer
+    at ICS Group of Companies, where she is leading the company's transition from entirely manual
+    workflows to AI-powered operations across departments.
+  </p>
+
+
+  <!-- ─── PROJECTS ──────────────────────────────────── -->
+  <h2 id="projects">projects</h2>
+
+  <div class="project">
+    <p><a href="demo.html?project=AI+Financial+Analyzer">AI Financial Analyzer</a> is a
+    full-stack AI platform for business financial analysis. The pitch is simple: upload an Excel
+    file, ask questions in plain English (things like "which city had the highest GP%?" or "how
+    many customers are overdue?"), and download a professionally formatted multi-page PDF report
+    with KPIs, charts, and customer tables, instantly. Built with React, FastAPI, and GPT-4o-mini.
+    The key design principle is that the LLM never touches the numbers. All aggregations, rankings,
+    and percentage calculations run deterministically in pandas. The model only writes the
+    business-language explanation from pre-computed results, which means the numbers are always
+    right. Deployed on Vercel and Hugging Face Spaces.</p>
+  </div>
+
+  <div class="project">
+    <p><a href="demo.html?project=AI+Hiring+Assessment+Generator">AI Hiring Assessment Generator</a> is a
+    SaaS frontend for generating AI-powered MCQ hiring assessments straight from job descriptions.
+    Paste a JD, pick a difficulty level, and get a categorised set of questions across Logical,
+    Analytical, Role-Based, and Situational sections, exportable as PDF or DOCX. Built with
+    Next.js 14, TypeScript, and Tailwind CSS. I added a mock fallback so the whole frontend works
+    independently of the backend, which turned out to be a good call during demos.</p>
+  </div>
+
+  <div class="project">
+    <p><a href="demo.html?project=ATS+Resume+Analyzer">ATS Resume Analyzer</a> is an AI-powered
+    resume screening tool built for HR teams. Upload up to 10 resumes, paste a job description,
+    and get a ranked candidate table with honest, human-like scoring. The scoring engine does skill
+    equivalence detection (CapCut = Premiere, that kind of thing), soft skill inference, retention
+    risk flagging, and generates suggested interview questions per candidate. It supports OpenAI,
+    Groq (free tier), Anthropic, and local Ollama for teams that need full privacy. Nothing is
+    stored or logged. Built with React, Vite, and FastAPI.</p>
+  </div>
+
+  <p>All projects on <a href="https://github.com/AakankshaLanghani">GitHub</a>.</p>
+
+
+  <!-- ─── RESEARCH ──────────────────────────────────── -->
+  <h2 id="research">research</h2>
+
+  <div class="pub">
+    <div>
+      EEG-Based Emotion Recognition System for Clinical Assistive Healthcare
+      &nbsp;&nbsp;<span class="pub-venue">2025</span>
+    </div>
+    <span class="pub-authors">Aakanksha Pardeep</span>
+    <p>
+      The problem this addresses is a real and underappreciated one: patients with locked-in
+      syndrome, end-stage ALS, or severe spinal cord injury are fully cognitively aware but have no
+      way to express whether they are in pain, scared, or uncomfortable. Standard ICU equipment
+      tracks haemodynamics just fine but offers nothing on subjective distress.
+    </p>
+    <p>
+      I built an end-to-end Brain-Computer Interface for real-time emotion recognition from EEG
+      signals. The system processes 14-channel data from the GAMEEMO database (28 subjects, Emotiv
+      EPOC+ headset, 128 Hz), runs it through four-stage filtering (band-pass, notch, ICA, epoch
+      normalisation), and extracts 11 features per epoch across five canonical frequency bands using
+      a 50% overlap sliding window. Six classifiers were trained on 13,068 windowed samples across 4
+      emotion classes: SVM, KNN, Decision Tree, Random Forest, CNN, and XGBoost. XGBoost won by 5.4
+      percentage points over its nearest competitor, hitting <strong>90% overall accuracy</strong>
+      and <strong>91.5% precision on the Stress/Pain class</strong>, which is the one that matters
+      most clinically. The alert system fires only when prediction confidence clears 85%, a threshold
+      set deliberately to keep false alarms low in environments already suffering from alert fatigue.
+      Feature importance analysis confirmed the model is picking up on real neurophysiology: the most
+      discriminative signals come from frontal Beta and Gamma channels, consistent with the affective
+      computing literature.
+    </p>
+  </div>
+
+
+  <!-- ─── CONTACT ───────────────────────────────────── -->
+  <h2 id="contact">contact</h2>
+
+  <div class="contact-grid">
+    <div>
+      <span class="contact-label">email</span>
+      <a href="mailto:akankshalanghani13@gmail.com">akankshalanghani13@gmail.com</a>
+    </div>
+    <div>
+      <span class="contact-label">linkedin</span>
+      <a href="https://www.linkedin.com/in/aakankshapardeep/">linkedin.com/in/aakankshapardeep</a>
+    </div>
+    <div>
+      <span class="contact-label">github</span>
+      <a href="https://github.com/AakankshaLanghani">github.com/AakankshaLanghani</a>
+    </div>
+  </div>
+
+
+  <!-- ─── MISC ────────────────────────────────────────── -->
+  <h2 id="misc">misc unsorted</h2>
+
+  <ul style="list-style:disc; padding-left:1.4em; font-family:Georgia,serif; line-height:1.75;">
+    <li style="margin-bottom:0.6em;">
+      My research paper on EEG signals and emotion recognition for ICU patients remains the project
+      I am most proud of. The problem it addresses is one most people do not think about: patients
+      who are fully conscious but have no way to say they are in pain. It set the bar for what I
+      think good AI work should actually do.
+    </li>
+    <li style="margin-bottom:0.6em;">
+      I am convinced that most business problems are really just data pipeline problems in disguise.
+      And most data pipeline problems are really just a missing LLM call away from being solved.
+    </li>
+    <li style="margin-bottom:0.6em;">
+      I read a lot. Mostly fiction, some history, the occasional technical book I tell myself I will
+      finish (I always finish it). Crime and detective shows are my guilty pleasure — I have watched
+      more episodes of Vampire Diaries and How to Get Away with Murder than I would like to admit,
+      and I am convinced that good detective work and good debugging are basically the same skill.
+    </li>
+    <li style="margin-bottom:0.6em;">
+      I want to travel the world. The list is long, the passport stamps are not enough yet.
+      I am working on it.
+    </li>
+    <li style="margin-bottom:0.6em;">
+      The long-term goal is to build my own AI company. Not a wrapper on top of someone else's
+      API, but something that genuinely could not have existed ten years ago. I think about what
+      that looks like a lot. Working at a company where I am the only AI engineer and have to
+      figure everything out from scratch is good training for it.
+    </li>
+    <li style="margin-bottom:0.6em;">
+      0 frameworks were used to make this website because I am becoming seriously allergic to
+      bloated builds. Pure HTML and CSS in one static file and that is it.
+    </li>
+  </ul>
+
+
+  <footer>
+    &copy; 2026 Aakanksha Pardeep &mdash; Karachi, PK.
+    <br>This site was inspired by <a href="https://karpathy.ai" style="color:#aaa;">Andrej Karpathy's website</a>. Thank you, Andrej.
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a Demo &mdash; Aakanksha Pardeep</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 16px;
+      line-height: 1.75;
+      color: #222;
+      background: #fff;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+    }
+
+    a { color: #1a0dab; }
+
+    .back {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.85em;
+      color: #999;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 2.5em;
+    }
+
+    .back:hover { color: #444; }
+
+    h1 {
+      font-size: 2.2em;
+      font-weight: normal;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.2em;
+    }
+
+    .subtitle {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #666;
+      font-size: 0.92em;
+      margin-bottom: 2.2em;
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.82em;
+      background: #f0f0f0;
+      color: #444;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 2em;
+    }
+
+    label {
+      display: block;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.85em;
+      color: #555;
+      margin-bottom: 0.35em;
+      margin-top: 1.4em;
+    }
+
+    label:first-of-type { margin-top: 0; }
+
+    input, textarea, select {
+      width: 100%;
+      font-family: Georgia, serif;
+      font-size: 0.95em;
+      color: #222;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 10px 13px;
+      background: #fff;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #999;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    button {
+      margin-top: 1.8em;
+      background: #222;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 28px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.92em;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    button:hover { background: #444; }
+
+    /* success state */
+    .success {
+      display: none;
+      text-align: center;
+      padding: 3em 0;
+    }
+
+    .success h2 {
+      font-size: 1.6em;
+      font-weight: normal;
+      margin-bottom: 0.5em;
+    }
+
+    .success p {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #666;
+      font-size: 0.92em;
+    }
+
+    .checkmark {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back">&larr; back</a>
+
+  <!-- success screen (hidden by default) -->
+  <div class="success" id="success">
+    <div class="checkmark">&#10003;</div>
+    <h2>Got it, thanks!</h2>
+    <p>I'll be in touch within 24 hours.<br>
+    <a href="index.html">Back to homepage</a></p>
+  </div>
+
+  <!-- form -->
+  <div id="form-wrap">
+    <h1>Request a demo</h1>
+    <p class="subtitle">Drop your details and I'll reach out with access, a walkthrough, or more info.</p>
+
+    <div class="project-tag" id="project-label">Project</div>
+
+    <form id="demo-form" action="https://api.web3forms.com/submit" method="POST">
+
+      <!-- ⚠️  Replace with your Web3Forms access key from web3forms.com -->
+      <input type="hidden" name="access_key" value="83ea5c13-4ff9-456d-a099-1d22d6734dd5">
+      <input type="hidden" name="subject" id="email-subject" value="Demo Request">
+      <input type="hidden" name="redirect" value="">
+
+      <!-- honeypot -->
+      <input type="checkbox" name="botcheck" style="display:none">
+
+      <label for="project">Project</label>
+      <select name="project" id="project-select">
+        <option value="AI Financial Analyzer">AI Financial Analyzer</option>
+        <option value="AI Hiring Assessment Generator">AI Hiring Assessment Generator</option>
+        <option value="ATS Resume Analyzer">ATS Resume Analyzer</option>
+      </select>
+
+      <label for="name">Your name</label>
+      <input type="text" name="name" id="name" required placeholder="Jane Smith">
+
+      <label for="email">Your email</label>
+      <input type="email" name="email" id="email" required placeholder="jane@company.com">
+
+      <label for="company">Company / Organization <span style="color:#aaa">(optional)</span></label>
+      <input type="text" name="company" id="company" placeholder="Acme Corp">
+
+      <label for="message">What would you like to see?</label>
+      <textarea name="message" id="message" placeholder="Briefly describe your use case or what you'd like demoed..."></textarea>
+
+      <button type="submit">Send request &rarr;</button>
+    </form>
+  </div>
+
+  <script>
+    // Pre-select project from URL param e.g. demo.html?project=ATS+Resume+Analyzer
+    const params = new URLSearchParams(window.location.search);
+    const project = params.get('project');
+
+    if (project) {
+      const select = document.getElementById('project-select');
+      const label = document.getElementById('project-label');
+      for (let opt of select.options) {
+        if (opt.value === project) { opt.selected = true; break; }
+      }
+      label.textContent = project;
+      document.getElementById('email-subject').value = 'Demo Request: ' + project;
+    }
+
+    // Update subject when dropdown changes
+    document.getElementById('project-select').addEventListener('change', function() {
+      document.getElementById('project-label').textContent = this.value;
+      document.getElementById('email-subject').value = 'Demo Request: ' + this.value;
+    });
+
+    // Handle form submission
+    document.getElementById('demo-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      const data = new FormData(this);
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data
+      });
+
+      if (res.ok) {
+        document.getElementById('form-wrap').style.display = 'none';
+        document.getElementById('success').style.display = 'block';
+      } else {
+        btn.textContent = 'Send request →';
+        btn.disabled = false;
+        alert('Something went wrong. Please email me directly at akankshalanghani13@gmail.com');
+      }
+    });
+  </script>
+
+</body>
+</html>
