@@ -127,6 +127,12 @@
       font-size: 2.5em;
       margin-bottom: 0.5em;
     }
+
+    @media (max-width: 520px) {
+      body { padding: 32px 18px 64px; font-size: 15px; }
+      h1 { font-size: 1.7em; }
+      button { width: 100%; padding: 14px; font-size: 1em; }
+    }
   </style>
 </head>
 <body>
@@ -163,6 +169,7 @@
         <option value="AI Financial Analyzer">AI Financial Analyzer</option>
         <option value="AI Hiring Assessment Generator">AI Hiring Assessment Generator</option>
         <option value="ATS Resume Analyzer">ATS Resume Analyzer</option>
+        <option value="Other / Something else">Other / Something else</option>
       </select>
 
       <label for="name">Your name</label>
