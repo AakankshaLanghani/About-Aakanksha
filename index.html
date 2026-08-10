@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aakanksha Pardeep — AI Engineer</title>
+<meta name="description" content="Aakanksha Pardeep, AI research and development engineer. Drag the project cards around.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loader">
+  <div id="loader-mascot">
+    <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="100" cy="210" rx="70" ry="8" fill="#5F4A8B" opacity="0.15"/>
+      <path d="M45 90 Q35 40 100 30 Q165 40 155 90 L158 160 Q150 185 130 190 L70 190 Q50 185 42 160 Z" fill="#2E2436"/>
+      <ellipse cx="100" cy="105" rx="52" ry="55" fill="#FBD9B8"/>
+      <ellipse cx="66" cy="120" rx="12" ry="8" fill="#F4A896" opacity="0.7"/>
+      <ellipse cx="134" cy="120" rx="12" ry="8" fill="#F4A896" opacity="0.7"/>
+      <path d="M48 95 Q40 45 100 32 Q160 45 152 95 Q140 70 100 68 Q60 70 48 95 Z" fill="#3A2E4D"/>
+      <path d="M40 95 Q38 130 50 165 Q35 140 38 95 Z" fill="#2E2436"/>
+      <path d="M160 95 Q162 130 150 165 Q165 140 162 95 Z" fill="#2E2436"/>
+      <circle cx="76" cy="108" r="24" fill="none" stroke="#5F4A8B" stroke-width="5"/>
+      <circle cx="124" cy="108" r="24" fill="none" stroke="#5F4A8B" stroke-width="5"/>
+      <line x1="97" y1="104" x2="103" y2="104" stroke="#5F4A8B" stroke-width="5"/>
+      <path d="M68 108 Q76 98 84 108" fill="none" stroke="#3A2E4D" stroke-width="4" stroke-linecap="round"/>
+      <path d="M116 108 Q124 98 132 108" fill="none" stroke="#3A2E4D" stroke-width="4" stroke-linecap="round"/>
+      <path d="M84 135 Q100 150 116 135" fill="none" stroke="#3A2E4D" stroke-width="4" stroke-linecap="round"/>
+      <g fill="#F4A896"><path d="M158 60 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3 z"/></g>
+      <path d="M60 190 Q100 205 140 190 L150 220 L50 220 Z" fill="#B7DFD4"/>
+      <path d="M78 188 L88 205 L100 190 L112 205 L122 188" fill="none" stroke="#FFFDF3" stroke-width="4" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div id="loader-text">booting up an AI engineer<span id="loader-dots">.</span></div>
+</div>
+
+<div id="cursor-dot"></div>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">Aakanksha Pardeep</div>
+    <div class="topbar-links">
+      <a href="#" data-open="projects">Projects</a>
+      <a href="#" data-open="experience">Experience</a>
+      <a href="#" data-open="contact">Contact</a>
+    </div>
+  </div>
+</div>
+
+<button id="back-to-game">← Back to game</button>
+
+<section class="hero" id="game-view">
+  <div class="wrap">
+    <div class="game-hud">
+      <div class="hud-left">
+        <span class="hud-label">PLAYER</span>
+        <span class="hud-name">Aakanksha Pardeep</span>
+      </div>
+      <div class="hud-right">
+        <span class="hud-label">CLASS</span>
+        <span class="hud-name">AI Engineer</span>
+      </div>
+    </div>
+
+    <div id="game-stage">
+      <div class="stage-sky"></div>
+      <div class="sun"></div>
+      <div class="cloud c1"></div>
+      <div class="cloud c2"></div>
+      <div class="cloud c3"></div>
+
+      <div class="signpost" data-goto="projects" style="left:14%">
+        <div class="sign-label">Projects</div>
+        <div class="sign-post"></div>
+      </div>
+      <div class="signpost" data-goto="experience" style="left:38%">
+        <div class="sign-label">Experience</div>
+        <div class="sign-post"></div>
+      </div>
+      <div class="signpost" data-goto="research" style="left:62%">
+        <div class="sign-label">Research</div>
+        <div class="sign-post"></div>
+      </div>
+      <div class="signpost" data-goto="contact" style="left:86%">
+        <div class="sign-label">Contact</div>
+        <div class="sign-post"></div>
+      </div>
+
+      <div id="player" title="use the arrow keys">
+        <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="100" cy="210" rx="70" ry="8" fill="#5F4A8B" opacity="0.15"/>
+          <path d="M45 90 Q35 40 100 30 Q165 40 155 90 L158 160 Q150 185 130 190 L70 190 Q50 185 42 160 Z" fill="#2E2436"/>
+          <ellipse cx="100" cy="105" rx="52" ry="55" fill="#FBD9B8"/>
+          <ellipse cx="66" cy="120" rx="12" ry="8" fill="#F4A896" opacity="0.7"/>
+          <ellipse cx="134" cy="120" rx="12" ry="8" fill="#F4A896" opacity="0.7"/>
+          <path d="M48 95 Q40 45 100 32 Q160 45 152 95 Q140 70 100 68 Q60 70 48 95 Z" fill="#3A2E4D"/>
+          <path d="M40 95 Q38 130 50 165 Q35 140 38 95 Z" fill="#2E2436"/>
+          <path d="M160 95 Q162 130 150 165 Q165 140 162 95 Z" fill="#2E2436"/>
+          <circle cx="76" cy="108" r="24" fill="none" stroke="#5F4A8B" stroke-width="5"/>
+          <circle cx="124" cy="108" r="24" fill="none" stroke="#5F4A8B" stroke-width="5"/>
+          <line x1="97" y1="104" x2="103" y2="104" stroke="#5F4A8B" stroke-width="5"/>
+          <path d="M68 108 Q76 98 84 108" fill="none" stroke="#3A2E4D" stroke-width="4" stroke-linecap="round"/>
+          <path d="M116 108 Q124 98 132 108" fill="none" stroke="#3A2E4D" stroke-width="4" stroke-linecap="round"/>
+          <path d="M84 135 Q100 150 116 135" fill="none" stroke="#3A2E4D" stroke-width="4" stroke-linecap="round"/>
+          <g fill="#F4A896"><path d="M158 60 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3 z"/></g>
+          <path d="M60 190 Q100 205 140 190 L150 220 L50 220 Z" fill="#B7DFD4"/>
+          <path d="M78 188 L88 205 L100 190 L112 205 L122 188" fill="none" stroke="#FFFDF3" stroke-width="4" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="sign-prompt" id="sign-prompt">press <kbd>space</kbd> to open</div>
+      <div class="ground"></div>
+    </div>
+
+    <div class="game-controls">
+      <p class="control-hint desktop-only">← → to move · space / ↑ to jump · walk up to a sign and press space to open it</p>
+      <div class="touch-pad mobile-only">
+        <button id="btn-left" aria-label="move left">←</button>
+        <button id="btn-jump" aria-label="jump / open">OPEN</button>
+        <button id="btn-right" aria-label="move right">→</button>
+      </div>
+    </div>
+
+    <p class="lede">I make AI do the boring parts of people's jobs so they don't have to.</p>
+  </div>
+</section>
+
+<div id="content-panels">
+
+<section class="block panel" id="panel-experience" data-panel="experience">
+  <div class="wrap">
+    <span class="doodle d2" style="top:0;right:6%;">✧</span>
+    <span class="doodle d4" style="top:6%;left:2%;">●</span>
+    <div class="section-head">
+      <div class="tag-label">Experience</div>
+      <h2>Quest log</h2>
+    </div>
+    <div class="quest-log">
+      <div class="quest open">
+        <button class="quest-head">
+          <span class="quest-status">●</span>
+          <span class="quest-title">ICS Group of Companies <em>— AI Engineer</em></span>
+          <span class="quest-date">Jan 2026 — present</span>
+          <span class="quest-chevron">▾</span>
+        </button>
+        <div class="quest-body">
+          <p>Built an AI tool that automates financial reporting from raw Excel uploads, cutting manual analysis time by 80% — answers natural language questions over financial data and auto-generates full PDF reports in 10–20 seconds, secured with JWT auth and zero data storage. Built and deployed an AI Resume Analyzer (FastAPI + Node.js) that scores candidates against job descriptions with summaries, interview questions, and gap analysis, cutting manual screening time by 60%. Also built an AI Assessment Generator producing tailored hiring questions with one-click PDF/Word export, and designed structured AI prompts for HR and Finance to benchmark candidate fit and automate manual workflows.</p>
+        </div>
+      </div>
+      <div class="quest">
+        <button class="quest-head">
+          <span class="quest-status">✓</span>
+          <span class="quest-title">Avanza Solutions <em>— AI Intern</em></span>
+          <span class="quest-date">Sep – Nov 2025</span>
+          <span class="quest-chevron">▾</span>
+        </button>
+        <div class="quest-body">
+          <p>Built an agentic AI for the Pre-Sales team automating client engagement and data collection workflows. Deployed a full-stack Revenue Analyzer AI Agent (n8n, Supabase, PostgreSQL, dynamic frontend) enabling natural language queries, SQL generation, and real-time financial insights, with RAG for reasoning over structured and unstructured data.</p>
+        </div>
+      </div>
+      <div class="quest">
+        <button class="quest-head">
+          <span class="quest-status">✓</span>
+          <span class="quest-title">Wavetec <em>— Data and AI Intern</em></span>
+          <span class="quest-date">Jun – Sep 2025</span>
+          <span class="quest-chevron">▾</span>
+        </button>
+        <div class="quest-body">
+          <p>Documented and analyzed 500+ stored procedures across the Spectra Dashboard, and ran SQL-based audits to flag redundant procedures. Integrated Meta's WhatsApp API for template messaging and session flows with branch-level, role-based access. Built an AI chatbot (n8n, LangChain, GPT-4o, Supabase, Pinecone) for real-time support via RAG and dynamic memory management.</p>
+        </div>
+      </div>
+      <div class="quest">
+        <button class="quest-head">
+          <span class="quest-status">✓</span>
+          <span class="quest-title">Curvet Solution <em>— Data Analyst Intern</em></span>
+          <span class="quest-date">Sep – Nov 2024</span>
+          <span class="quest-chevron">▾</span>
+        </button>
+        <div class="quest-body">
+          <p>Extracted, cleaned, and transformed large datasets using SQL and Python for BI initiatives, and built interactive Power BI dashboards delivering actionable insights for stakeholder decision-making.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin-top:56px;">
+      <div class="tag-label">Achievements unlocked</div>
+      <h2>Fun under pressure</h2>
+    </div>
+    <div class="achv-grid">
+      <div class="achv-card">
+        <div class="achv-icon">🏆</div>
+        <div class="achv-rank">2nd place</div>
+        <h3>HackfestX Datathon 2025, IBA Karachi</h3>
+        <p>Team lead for the CSI: Crime Scene Investigation track. Led a 6-member team through a two-day cyber-investigation challenge — first to decrypt all Day 1 files using Autopsy, FTK Imager, Sleuth Kit, and StegExpose, then identified the final target ahead of every other team on Day 2.</p>
+      </div>
+      <div class="achv-card">
+        <div class="achv-icon">🛰️</div>
+        <div class="achv-rank">Participant</div>
+        <h3>NASA Space Apps Challenge 2024</h3>
+        <p>Built a Power BI dashboard visualizing glacier ice loss, freshwater flux, and sea-level impact, plus a public-facing data storytelling site pairing visualizations with climate narratives.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block panel" id="panel-projects" data-panel="projects">
+  <div class="wrap">
+    <span class="doodle d1" style="top:0;right:10%;">✦</span>
+    <span class="doodle d3" style="top:2%;left:4%;">+</span>
+    <div class="section-head">
+      <div class="tag-label">Projects</div>
+      <h2>Things I've shipped</h2>
+    </div>
+    <p class="playground-hint">↳ drag the cards around. they collide. try it.</p>
+    <div id="physics-stage">
+      <div class="phys-card c-violet" id="card-1">
+        <h4>AI Financial Analyzer</h4>
+        <p>Automates financial reporting from Excel uploads — 80% less manual analysis time, PDF reports in 10–20 seconds.</p>
+        <div class="pill-row"><span class="pill">React</span><span class="pill">FastAPI</span><span class="pill">JWT</span></div>
+        <a href="https://about-aakanksha.vercel.app/demo.html?project=AI+Financial+Analyzer" target="_blank">View demo →</a>
+      </div>
+      <div class="phys-card c-coral" id="card-2">
+        <h4>AI Resume Analyzer</h4>
+        <p>Scores resumes against a JD in batches of 10, cutting manual screening time by 60%.</p>
+        <div class="pill-row"><span class="pill">FastAPI</span><span class="pill">Node.js</span></div>
+        <a href="https://about-aakanksha.vercel.app/demo.html?project=ATS+Resume+Analyzer" target="_blank">View demo →</a>
+      </div>
+      <div class="phys-card c-mint" id="card-3">
+        <h4>AI Assessment Generator</h4>
+        <p>Tailored hiring questions across logical, analytical, role, and situational — one-click PDF/Word export.</p>
+        <div class="pill-row"><span class="pill">Next.js</span><span class="pill">TypeScript</span></div>
+        <a href="https://about-aakanksha.vercel.app/demo.html?project=AI+Hiring+Assessment+Generator" target="_blank">View demo →</a>
+      </div>
+      <div class="phys-card c-violet" id="card-4">
+        <h4>AI Document Analysis Agent</h4>
+        <p>Upload a PDF, ask questions about it. RAG pipeline over LangChain, OpenAI, and ChromaDB.</p>
+        <div class="pill-row"><span class="pill">LangChain</span><span class="pill">ChromaDB</span></div>
+      </div>
+      <div class="phys-card c-coral" id="card-5">
+        <h4>Inventory Management Agent</h4>
+        <p>Monitors Google Sheets inventory, uses Gemini + n8n to auto-update and flag out-of-stock items.</p>
+        <div class="pill-row"><span class="pill">n8n</span><span class="pill">Gemini</span></div>
+      </div>
+      <div class="phys-card c-mint" id="card-6">
+        <h4>Northwind Company Analysis</h4>
+        <p>Power BI dashboard, 10+ visuals on sales, segments, and logistics — identified top revenue drivers.</p>
+        <div class="pill-row"><span class="pill">Power BI</span><span class="pill">SQL</span></div>
+      </div>
+      <div class="phys-card c-violet" id="card-7">
+        <h4>Superstore Sales & Forecast</h4>
+        <p>Dashboard over 10,000+ records with a 15-day DAX sales forecast — 30% faster dashboard responsiveness.</p>
+        <div class="pill-row"><span class="pill">Power BI</span><span class="pill">DAX</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block panel" id="panel-research" data-panel="research">
+  <div class="wrap">
+    <div class="research-card research-split">
+      <div class="research-text">
+        <div class="tag-label">Featured research · 2026</div>
+        <h3>EEG-Based Emotion Recognition for Clinical Assistive Healthcare</h3>
+        <p class="long">Patients with locked-in syndrome, end-stage ALS, or severe spinal cord injury are fully cognitively aware but have no way to express pain, fear, or discomfort. I built an end-to-end brain-computer interface for real-time emotion recognition from EEG signals — 14-channel data, four-stage filtering, 11 features per epoch across five frequency bands. Six classifiers trained on 13,068 windowed samples; XGBoost won with 90% accuracy and 91.5% precision on the Stress/Pain class — the one that matters most clinically.</p>
+      </div>
+
+      <div class="neuro-panel">
+        <div class="neuro-head">
+          <span class="neuro-dot"></span>
+          <span>NEUROTRACK</span>
+        </div>
+        <div class="neuro-headset">
+          <svg viewBox="0 0 140 130" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 70 Q20 15 70 15 Q120 15 120 70" fill="none" stroke="#EFEAFB" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="26" cy="68" r="6" fill="#F4A896"/>
+            <circle cx="45" cy="28" r="6" fill="#F4A896"/>
+            <circle cx="70" cy="18" r="6" fill="#F4A896"/>
+            <circle cx="95" cy="28" r="6" fill="#F4A896"/>
+            <circle cx="114" cy="68" r="6" fill="#F4A896"/>
+            <circle cx="70" cy="70" r="30" fill="none" stroke="#B7DFD4" stroke-width="2" stroke-dasharray="4 4" class="neuro-scan"/>
+          </svg>
+        </div>
+        <div class="neuro-readout">
+          <div>
+            <div class="neuro-label">Detected emotion</div>
+            <div class="neuro-value">Calm</div>
+          </div>
+          <div>
+            <div class="neuro-label">Confidence</div>
+            <div class="neuro-bar"><div class="neuro-bar-fill" id="neuro-bar-fill"></div></div>
+          </div>
+        </div>
+        <div class="neuro-eq">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="neuro-features">
+          <div><strong>90%</strong> accuracy</div>
+          <div><strong>XGBoost</strong> model</div>
+          <div><strong>14</strong> EEG channels</div>
+          <div><strong>Real-time</strong> alerts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block panel" id="panel-contact" data-panel="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag-label">Notes</div>
+      <h2>Odds and ends</h2>
+    </div>
+    <div class="notes-grid">
+      <div class="note">My EEG research paper is the project I'm most proud of — it set the bar for what good AI work should do.</div>
+      <div class="note">Most business problems are data pipeline problems in disguise. Most pipeline problems are one LLM call away from solved.</div>
+      <div class="note">I read a lot — mostly fiction. Crime shows are my guilty pleasure. Good detective work and good debugging are the same skill.</div>
+      <div class="note">I want to travel the world. The list is long, the passport stamps are not enough yet.</div>
+      <div class="note">Long-term goal: my own AI company. Not a wrapper — something that couldn't have existed 10 years ago.</div>
+      <div class="note">This site: zero frameworks. I'm becoming seriously allergic to bloated builds.</div>
+    </div>
+
+    <div class="contact-block" style="padding-left:0;padding-right:0;">
+      <span class="doodle d1">✦</span>
+      <span class="doodle d2">✧</span>
+      <span class="doodle d3">+</span>
+      <span class="doodle d4">●</span>
+      <span class="doodle d5">✦</span>
+      <h2 class="pop-title">Let's talk.</h2>
+      <p>Always happy to talk about AI agents, RAG pipelines, or good crime shows.</p>
+      <div class="social-row">
+        <a href="mailto:akankshalanghani13@gmail.com" class="social-btn"><span>✉</span> Email</a>
+        <a href="https://www.linkedin.com/in/aakankshapardeep/" target="_blank" class="social-btn"><span>in</span> LinkedIn</a>
+        <a href="https://github.com/AakankshaLanghani" target="_blank" class="social-btn"><span>⌥</span> GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>© 2026 Aakanksha Pardeep — Karachi, PK. Zero frameworks were harmed in the making of this site.</footer>
+
+<div class="speech-bubble" id="speech-bubble"></div>
+<div id="mascot-wrap">
+  <div class="mascot-hint" id="mascot-hint">psst, click me!</div>
+  <div class="mascot-ring"></div>
+  <div class="mascot-dot" id="mascot-dot"></div>
+  <div id="mascot">
+    <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="100" cy="210" rx="70" ry="8" fill="#5F4A8B" opacity="0.1"/>
+      <path d="M45 90 Q35 40 100 30 Q165 40 155 90 L158 160 Q150 185 130 190 L70 190 Q50 185 42 160 Z" fill="#2E2436"/>
+      <ellipse cx="100" cy="105" rx="52" ry="55" fill="#FBD9B8"/>
+      <ellipse cx="66" cy="120" rx="12" ry="8" fill="#F4A896" opacity="0.7"/>
+      <ellipse cx="134" cy="120" rx="12" ry="8" fill="#F4A896" opacity="0.7"/>
+      <path d="M48 95 Q40 45 100 32 Q160 45 152 95 Q140 70 100 68 Q60 70 48 95 Z" fill="#3A2E4D"/>
+      <path d="M40 95 Q38 130 50 165 Q35 140 38 95 Z" fill="#2E2436"/>
+      <path d="M160 95 Q162 130 150 165 Q165 140 162 95 Z" fill="#2E2436"/>
+      <circle cx="76" cy="108" r="24" fill="none" stroke="#5F4A8B" stroke-width="5"/>
+      <circle cx="124" cy="108" r="24" fill="none" stroke="#5F4A8B" stroke-width="5"/>
+      <line x1="97" y1="104" x2="103" y2="104" stroke="#5F4A8B" stroke-width="5"/>
+      <path d="M68 108 Q76 98 84 108" fill="none" stroke="#3A2E4D" stroke-width="4" stroke-linecap="round"/>
+      <path d="M116 108 Q124 98 132 108" fill="none" stroke="#3A2E4D" stroke-width="4" stroke-linecap="round"/>
+      <path d="M84 135 Q100 150 116 135" fill="none" stroke="#3A2E4D" stroke-width="4" stroke-linecap="round"/>
+      <g fill="#F4A896"><path d="M158 60 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3 z"/></g>
+      <path d="M60 190 Q100 205 140 190 L150 220 L50 220 Z" fill="#B7DFD4"/>
+      <path d="M78 188 L88 205 L100 190 L112 205 L122 188" fill="none" stroke="#FFFDF3" stroke-width="4" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+<script src="script.js?v=19"></script>
+</body>
+</html>
