@@ -115,6 +115,7 @@ document.querySelectorAll('[data-open]').forEach(el=>{
     }
     setTimeout(()=> document.body.classList.remove('konami'), 1400);
   }
+  document.getElementById('konami-btn')?.addEventListener('click', triggerKonami);
 })();
 
 // ---------- hero game: walkable mascot + signposts ----------
