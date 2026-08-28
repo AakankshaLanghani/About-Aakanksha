@@ -412,20 +412,6 @@ section.block{padding:90px 0;}
   .neuro-panel{max-width:340px;margin:0 auto;}
 }
 
-/* ---------- RESUME ---------- */
-.resume-shell{position:relative;z-index:1;}
-.resume-actions{display:flex;gap:12px;margin-bottom:22px;flex-wrap:wrap;}
-.resume-frame{
-  border:2px solid var(--ink);border-radius:16px;overflow:hidden;
-  box-shadow:4px 4px 0 var(--ink);
-  background:var(--paper);
-  height:820px;
-}
-.resume-frame iframe{width:100%;height:100%;border:none;display:block;}
-@media(max-width:640px){
-  .resume-frame{height:480px;}
-}
-
 /* ---------- MISC ---------- */
 .notes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
 .note{
@@ -470,6 +456,14 @@ section.block{padding:90px 0;}
   0%,100%{transform:translateY(0) rotate(0deg);}
   50%{transform:translateY(-16px) rotate(12deg);}
 }
+
+.social-divider{
+  display:flex;align-items:center;gap:12px;
+  max-width:340px;margin:34px auto 22px;
+  font-family:var(--mono);font-size:0.7rem;color:var(--ink-soft);
+  text-transform:uppercase;letter-spacing:0.5px;
+}
+.social-divider::before,.social-divider::after{content:'';flex:1;height:1px;background:var(--line);}
 
 .social-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
 .social-btn{
