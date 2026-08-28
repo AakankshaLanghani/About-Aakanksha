@@ -86,18 +86,34 @@ document.querySelectorAll('[data-open]').forEach(el=>{
   });
   function triggerKonami(){
     document.body.classList.add('konami');
-    for(let i=0;i<6;i++){
-      setTimeout(()=> burstConfetti(Math.random()*window.innerWidth, Math.random()*window.innerHeight*0.6), i*120);
+
+    const cx = window.innerWidth/2, cy = window.innerHeight/2;
+    burstConfetti(cx, cy);
+    for(let i=1;i<8;i++){
+      setTimeout(()=> burstConfetti(Math.random()*window.innerWidth, Math.random()*window.innerHeight*0.7), i*150);
     }
+
+    const banner = document.getElementById('konami-banner');
+    if(banner){
+      banner.classList.add('show');
+      setTimeout(()=> banner.classList.remove('show'), 2600);
+    }
+
     const bubble = document.getElementById('speech-bubble');
     const mascotWrap = document.getElementById('mascot-wrap');
     if(bubble && mascotWrap){
+      const wasHidden = mascotWrap.style.opacity === '0' || getComputedStyle(mascotWrap).opacity === '0';
+      if(wasHidden) mascotWrap.classList.add('force-show');
       bubble.textContent = "okay you actually typed the Konami code. respect.";
       bubble.classList.add('show');
       mascotWrap.classList.add('spin');
-      setTimeout(()=>{ bubble.classList.remove('show'); mascotWrap.classList.remove('spin'); }, 3000);
+      setTimeout(()=>{
+        bubble.classList.remove('show');
+        mascotWrap.classList.remove('spin');
+        if(wasHidden) mascotWrap.classList.remove('force-show');
+      }, 3000);
     }
-    setTimeout(()=> document.body.classList.remove('konami'), 1200);
+    setTimeout(()=> document.body.classList.remove('konami'), 1400);
   }
 })();
 

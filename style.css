@@ -496,11 +496,29 @@ footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);f
 }
 #mascot-wrap.spin #mascot{animation:mascotSpin .6s linear 2;}
 @keyframes mascotSpin{from{transform:rotate(0deg) scale(1.1);}to{transform:rotate(360deg) scale(1.1);}}
+#mascot-wrap.force-show{opacity:1 !important;pointer-events:auto !important;}
 
-body.konami{animation:konamiFlash 0.3s steps(2) 4;}
+body.konami{animation:konamiFlash 0.35s steps(2) 4;}
 @keyframes konamiFlash{
   0%,100%{filter:none;}
-  50%{filter:hue-rotate(180deg) saturate(1.6);}
+  50%{filter:hue-rotate(180deg) saturate(2.2) brightness(1.1);}
+}
+
+#konami-banner{
+  position:fixed;top:18%;left:50%;
+  transform:translate(-50%,-10px);
+  font-family:var(--mono);font-weight:700;font-size:1.1rem;
+  color:var(--violet-deep);background:var(--lemon);
+  border:3px solid var(--ink);border-radius:14px;
+  padding:16px 28px;
+  box-shadow:5px 5px 0 var(--ink);
+  z-index:10001;
+  opacity:0;pointer-events:none;
+  transition:opacity .25s ease, transform .25s cubic-bezier(.34,1.56,.64,1);
+}
+#konami-banner.show{opacity:1;transform:translate(-50%,0) scale(1.03);}
+@media(max-width:640px){
+  #konami-banner{font-size:0.85rem;padding:12px 20px;top:14%;}
 }
 #mascot{
   position:relative;
