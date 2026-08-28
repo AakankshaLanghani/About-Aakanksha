@@ -72,6 +72,35 @@ document.querySelectorAll('[data-open]').forEach(el=>{
   el.addEventListener('click', (e)=>{ e.preventDefault(); openPanel(el.dataset.open); });
 });
 
+// ---------- konami code easter egg ----------
+(function(){
+  const code = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let pos = 0;
+  window.addEventListener('keydown', (e)=>{
+    const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    if(key === code[pos]) pos++; else pos = (key === code[0]) ? 1 : 0;
+    if(pos === code.length){
+      pos = 0;
+      triggerKonami();
+    }
+  });
+  function triggerKonami(){
+    document.body.classList.add('konami');
+    for(let i=0;i<6;i++){
+      setTimeout(()=> burstConfetti(Math.random()*window.innerWidth, Math.random()*window.innerHeight*0.6), i*120);
+    }
+    const bubble = document.getElementById('speech-bubble');
+    const mascotWrap = document.getElementById('mascot-wrap');
+    if(bubble && mascotWrap){
+      bubble.textContent = "okay you actually typed the Konami code. respect.";
+      bubble.classList.add('show');
+      mascotWrap.classList.add('spin');
+      setTimeout(()=>{ bubble.classList.remove('show'); mascotWrap.classList.remove('spin'); }, 3000);
+    }
+    setTimeout(()=> document.body.classList.remove('konami'), 1200);
+  }
+})();
+
 // ---------- hero game: walkable mascot + signposts ----------
 (function(){
   const stage = document.getElementById('game-stage');
@@ -109,6 +138,24 @@ document.querySelectorAll('[data-open]').forEach(el=>{
   }
 
   signs.forEach(s=> s.el.addEventListener('click', ()=> openPanel(s.target)));
+
+  let secretFound = false;
+  const secretLines = [
+    "you found the edge of the map. there's nothing here, just vibes.",
+    "congrats, you're the kind of person who checks every corner. hire that instinct.",
+  ];
+  function checkSecretEdge(){
+    if(secretFound) return;
+    if(x >= stageW - PLAYER_W - 3){
+      secretFound = true;
+      const bubble = document.getElementById('speech-bubble');
+      bubble.textContent = secretLines[Math.floor(Math.random()*secretLines.length)];
+      bubble.classList.add('show', 'secret');
+      const r = stage.getBoundingClientRect();
+      burstConfetti(r.right - 20, r.bottom - 60);
+      setTimeout(()=> bubble.classList.remove('show','secret'), 4200);
+    }
+  }
 
   window.addEventListener('keydown', (e)=>{
     if(document.body.classList.contains('view-panel')) return;
@@ -157,6 +204,7 @@ document.querySelectorAll('[data-open]').forEach(el=>{
       player.classList.toggle('face-left', facing === -1);
 
       updatePrompt();
+      checkSecretEdge();
     }
     requestAnimationFrame(loop);
   }

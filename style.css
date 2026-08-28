@@ -494,6 +494,14 @@ footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);f
   width:64px;height:64px;
   z-index:9998;
 }
+#mascot-wrap.spin #mascot{animation:mascotSpin .6s linear 2;}
+@keyframes mascotSpin{from{transform:rotate(0deg) scale(1.1);}to{transform:rotate(360deg) scale(1.1);}}
+
+body.konami{animation:konamiFlash 0.3s steps(2) 4;}
+@keyframes konamiFlash{
+  0%,100%{filter:none;}
+  50%{filter:hue-rotate(180deg) saturate(1.6);}
+}
 #mascot{
   position:relative;
   width:100%;height:100%;
